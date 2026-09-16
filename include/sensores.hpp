@@ -14,8 +14,7 @@ public:
         return true;
     }
     bool emAlerta() const override {
-        // TODO: substituir o marcador pelo comportamento contratado.
-        return false;
+        return valor_ < 20;
     }
 };
 
@@ -25,13 +24,13 @@ public:
     explicit SensorTemperatura(std::string tag) : Sensor(std::move(tag)) {}
     double valor() const override { return valor_; }
     std::string unidade() const override { return "C"; }
+    
     bool atualizar(double leitura) override {
         if (!std::isfinite(leitura) || leitura < -40 || leitura > 125) return false;
         valor_ = leitura;
         return true;
     }
     bool emAlerta() const override {
-        // TODO: substituir o marcador pelo comportamento contratado.
         return false;
     }
 };
@@ -43,7 +42,7 @@ public:
     double valor() const override { return valor_; }
     std::string unidade() const override { return "bar"; }
     bool atualizar(double leitura) override {
-        // TODO ETAPA 02: validar antes de alterar o estado.
+        // TODO
         (void)leitura;
         return false;
     }
