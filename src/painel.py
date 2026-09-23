@@ -2,5 +2,9 @@ from sensores import Sensor
 
 
 def linha_painel(sensor: Sensor) -> str:
-    # TODO ETAPA 01: consultar somente o contrato Sensor.
-    return f"{sensor.tag}: PENDENTE"
+    return (
+        f"{sensor.tag}: "
+        f"{sensor.valor():.1f} "
+        f"{sensor.unidade()} | "
+        f"{'ALERTA' if sensor.em_alerta() else 'OK'}"
+    )
